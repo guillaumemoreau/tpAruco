@@ -149,8 +149,13 @@ void ArUco::drawScene() {
    //set length of one complete row in destination data (doesn't need to equal img.cols)
    glPixelStorei(GL_PACK_ROW_LENGTH, m_pixels.step/m_pixels.elemSize());
    // Reading back the pixels
+#ifdef APPLE
+    // horrible Apple-specific patch
+    glReadPixels(0, 0, m_GlWindowSize.width , m_GlWindowSize.height, GL_RGB, GL_UNSIGNED_BYTE, m_pixels.data);
+#else
    glReadPixels(0, 0, m_GlWindowSize.width , m_GlWindowSize.height, GL_RGB, GL_UNSIGNED_BYTE, m_pixels.data);
-   // Flip the pixels since OpenCV stores top to bottom and OpenGL from bottom to top
+#endif
+    // Flip the pixels since OpenCV stores top to bottom and OpenGL from bottom to top
    cv::flip(m_pixels, m_pixels, 0);
 }
 
