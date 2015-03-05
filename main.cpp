@@ -8,14 +8,19 @@
 
 
 // OpenGL/GLUT
-#include <OPENGL/gl.h>
-#include <GLUT/glut.h>
+#ifdef __APPLE__
+   #include <OPENGL/gl.h>
+   #include <GLUT/glut.h>
+#else
+   #include <stdlib.h>
+   #include <GL/glut.h>
+#endif
 
 // Main include
 #include "main.h"
 
 // number of the camera used. usually 0 for internal
-const int cameraId = 1;
+const int cameraId = 0;
 
 // marker size (in meters)
 const float markerSize = 0.105f;

@@ -17,7 +17,7 @@
    #include <OPENGL/gl.h>
    #include <GLUT/glut.h>
 #else
-   #include <GL/gl.h>
+   #include <stdlib.h>
    #include <GL/glut.h>
 #endif
 #include <aruco/aruco.h>
